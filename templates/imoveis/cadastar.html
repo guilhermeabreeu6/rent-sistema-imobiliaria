@@ -1,0 +1,809 @@
+{% extends "base.html" %}{% extends "base.html" %}{% extends "base.html" %}{% extends "base.html" %}{% extends "base.html" %}
+
+
+
+{% block title %}Cadastrar Imóvel - RENT{% endblock %}
+
+
+
+{% block content %}{% block title %}Cadastrar Imóvel - RENT{% endblock %}
+
+<div class="container mt-4">
+
+    <div class="row">
+
+        <div class="col-md-10 mx-auto">
+
+            <div class="card">{% block content %}{% block title %}Cadastro de Imóvel - RENT{% endblock %}
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4><i class="fas fa-home"></i> Cadastrar Novo Imóvel</h4><div class="container mt-4">
+
+                </div>
+
+                <div class="card-body">    <div class="row">
+
+                    <nav aria-label="breadcrumb">
+
+                        <ol class="breadcrumb">        <div class="col-md-10 mx-auto">
+
+                            <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+
+                            <li class="breadcrumb-item"><a href="{{ url_for('imoveis') }}">Imóveis</a></li>            <div class="card">{% block content %}{% block title %}Cadastro de Imóvel - RENT{% endblock %}{% block title %}Cadastro de Imóvel - RENT{% endblock %}
+
+                            <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
+
+                        </ol>                <div class="card-header bg-primary text-white">
+
+                    </nav>
+
+                    <h4><i class="fas fa-home"></i> Cadastrar Novo Imóvel</h4><div class="container">
+
+                    <form action="{{ url_for('adicionar_imovel') }}" method="POST">
+
+                        <div class="row">                </div>
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">                <div class="card-body">    <h2>Cadastro de Imóvel</h2>
+
+                                    <label for="tipo" class="form-label">Tipo do Imóvel:</label>
+
+                                    <select class="form-control" id="tipo" name="tipo" required>                    <nav aria-label="breadcrumb">
+
+                                        <option value="">Selecione o tipo</option>
+
+                                        <option value="Casa">Casa</option>                        <ol class="breadcrumb">    
+
+                                        <option value="Apartamento">Apartamento</option>
+
+                                        <option value="Kitnet">Kitnet</option>                            <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+
+                                        <option value="Studio">Studio</option>
+
+                                        <option value="Sobrado">Sobrado</option>                            <li class="breadcrumb-item"><a href="{{ url_for('imoveis') }}">Imóveis</a></li>    <form method="POST" action="/cadastrar_imovel">{% block content %}{% block content %}
+
+                                        <option value="Cobertura">Cobertura</option>
+
+                                        <option value="Terreno">Terreno</option>                            <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
+
+                                        <option value="Comercial">Comercial</option>
+
+                                        <option value="Industrial">Industrial</option>                        </ol>        <div class="mb-3">
+
+                                    </select>
+
+                                </div>                    </nav>
+
+                            </div>
+
+                            <div class="col-md-6">            <label for="tipo" class="form-label">Tipo do Imóvel:</label><div class="container"><div class="container">
+
+                                <div class="mb-3">
+
+                                    <label for="valor" class="form-label">Valor (R$):</label>                    <form action="{{ url_for('adicionar_imovel') }}" method="POST">
+
+                                    <input type="number" class="form-control" id="valor" name="valor" step="0.01" required>
+
+                                </div>                        <div class="row">            <select class="form-control" id="tipo" name="tipo" required>
+
+                            </div>
+
+                        </div>                            <div class="col-md-6">
+
+
+
+                        <div class="mb-3">                                <div class="mb-3">                <option value="">Selecione o tipo</option>    <h2>Cadastro de Imóvel</h2>    <h2>Cadastro de Imóvel</h2>
+
+                            <label for="endereco" class="form-label">Endereço Completo:</label>
+
+                            <textarea class="form-control" id="endereco" name="endereco" rows="3" required></textarea>                                    <label for="tipo" class="form-label">Tipo do Imóvel:</label>
+
+                        </div>
+
+                                    <select class="form-control" id="tipo" name="tipo" required>                <option value="Casa">Casa</option>
+
+                        <div class="row">
+
+                            <div class="col-md-4">                                        <option value="">Selecione o tipo</option>
+
+                                <div class="mb-3">
+
+                                    <label for="quartos" class="form-label">Quartos:</label>                                        <option value="Casa">Casa</option>                <option value="Apartamento">Apartamento</option>        
+
+                                    <input type="number" class="form-control" id="quartos" name="quartos" min="0">
+
+                                </div>                                        <option value="Apartamento">Apartamento</option>
+
+                            </div>
+
+                            <div class="col-md-4">                                        <option value="Kitnet">Kitnet</option>                <option value="Comercial">Comercial</option>
+
+                                <div class="mb-3">
+
+                                    <label for="banheiros" class="form-label">Banheiros:</label>                                        <option value="Studio">Studio</option>
+
+                                    <input type="number" class="form-control" id="banheiros" name="banheiros" min="0">
+
+                                </div>                                        <option value="Sobrado">Sobrado</option>                <option value="Terreno">Terreno</option>    <form method="POST" action="/cadastrar_imovel">    <form method="POST" action="/cadastrar_imovel">
+
+                            </div>
+
+                            <div class="col-md-4">                                        <option value="Cobertura">Cobertura</option>
+
+                                <div class="mb-3">
+
+                                    <label for="vagas_garagem" class="form-label">Vagas na Garagem:</label>                                        <option value="Terreno">Terreno</option>                <option value="Chácara">Chácara</option>
+
+                                    <input type="number" class="form-control" id="vagas_garagem" name="vagas_garagem" min="0">
+
+                                </div>                                        <option value="Comercial">Comercial</option>
+
+                            </div>
+
+                        </div>                                        <option value="Industrial">Industrial</option>            </select>        <div class="mb-3">        <div class="mb-3">
+
+
+
+                        <div class="row">                                    </select>
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">                                </div>        </div>
+
+                                    <label for="area" class="form-label">Área (m²):</label>
+
+                                    <input type="number" class="form-control" id="area" name="area" step="0.01">                            </div>
+
+                                </div>
+
+                            </div>                            <div class="col-md-6">                    <label for="tipo" class="form-label">Tipo do Imóvel:</label>            <label for="tipo" class="form-label">Tipo do Imóvel:</label>
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">                                <div class="mb-3">
+
+                                    <label for="corretor_id" class="form-label">Corretor Responsável:</label>
+
+                                    <select class="form-control" id="corretor_id" name="corretor_id" required>                                    <label for="valor" class="form-label">Valor (R$):</label>        <div class="mb-3">
+
+                                        <option value="">Selecione um corretor</option>
+
+                                        {% for corretor in corretores %}                                    <input type="number" class="form-control" id="valor" name="valor" step="0.01" required>
+
+                                        <option value="{{ corretor.id }}">{{ corretor.nome }} - {{ corretor.creci }}</option>
+
+                                        {% endfor %}                                </div>            <label for="endereco" class="form-label">Endereço:</label>            <select class="form-control" id="tipo" name="tipo" required>            <select class="form-control" id="tipo" name="tipo" required>
+
+                                    </select>
+
+                                </div>                            </div>
+
+                            </div>
+
+                        </div>                        </div>            <input type="text" class="form-control" id="endereco" name="endereco" required>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">                        <div class="mb-3">        </div>                <option value="">Selecione o tipo</option>                <option value="">Selecione o tipo</option>
+
+                                    <label for="status" class="form-label">Status:</label>
+
+                                    <select class="form-control" id="status" name="status" required>                            <label for="endereco" class="form-label">Endereço Completo:</label>
+
+                                        <option value="Disponível">Disponível</option>
+
+                                        <option value="Vendido">Vendido</option>                            <textarea class="form-control" id="endereco" name="endereco" rows="3" required></textarea>        
+
+                                        <option value="Alugado">Alugado</option>
+
+                                        <option value="Reservado">Reservado</option>                        </div>
+
+                                    </select>
+
+                                </div>        <div class="mb-3">                <option value="Casa">Casa</option>                <option value="Casa">Casa</option>
+
+                            </div>
+
+                            <div class="col-md-6">                        <div class="row">
+
+                                <div class="mb-3">
+
+                                    <label for="finalidade" class="form-label">Finalidade:</label>                            <div class="col-md-4">            <label for="valor" class="form-label">Valor (R$):</label>
+
+                                    <select class="form-control" id="finalidade" name="finalidade" required>
+
+                                        <option value="Venda">Venda</option>                                <div class="mb-3">
+
+                                        <option value="Aluguel">Aluguel</option>
+
+                                        <option value="Venda/Aluguel">Venda/Aluguel</option>                                    <label for="quartos" class="form-label">Quartos:</label>            <input type="number" class="form-control" id="valor" name="valor" step="0.01" min="0" required>                <option value="Apartamento">Apartamento</option>                <option value="Apartamento">Apartamento</option>
+
+                                    </select>
+
+                                </div>                                    <input type="number" class="form-control" id="quartos" name="quartos" min="0">
+
+                            </div>
+
+                        </div>                                </div>        </div>
+
+
+
+                        <div class="mb-3">                            </div>
+
+                            <label for="descricao" class="form-label">Descrição:</label>
+
+                            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>                            <div class="col-md-4">                        <option value="Comercial">Comercial</option>                <option value="Comercial">Comercial</option>
+
+                        </div>
+
+                                <div class="mb-3">
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                            <a href="{{ url_for('imoveis') }}" class="btn btn-secondary me-md-2">                                    <label for="banheiros" class="form-label">Banheiros:</label>        <div class="mb-3">
+
+                                <i class="fas fa-arrow-left"></i> Cancelar
+
+                            </a>                                    <input type="number" class="form-control" id="banheiros" name="banheiros" min="0">
+
+                            <button type="submit" class="btn btn-primary">
+
+                                <i class="fas fa-save"></i> Cadastrar Imóvel                                </div>            <label for="status" class="form-label">Status:</label>                <option value="Terreno">Terreno</option>                <option value="Terreno">Terreno</option>
+
+                            </button>
+
+                        </div>                            </div>
+
+                    </form>
+
+                </div>                            <div class="col-md-4">            <select class="form-control" id="status" name="status" required>
+
+            </div>
+
+        </div>                                <div class="mb-3">
+
+    </div>
+
+</div>                                    <label for="vagas_garagem" class="form-label">Vagas na Garagem:</label>                <option value="">Selecione o status</option>                <option value="Chácara">Chácara</option>                <option value="Chácara">Chácara</option>
+
+{% endblock %}
+                                    <input type="number" class="form-control" id="vagas_garagem" name="vagas_garagem" min="0">
+
+                                </div>                <option value="Disponível">Disponível</option>
+
+                            </div>
+
+                        </div>                <option value="Vendido">Vendido</option>            </select>            </select>
+
+
+
+                        <div class="row">                <option value="Alugado">Alugado</option>
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">                <option value="Em negociação">Em negociação</option>        </div>        </div>
+
+                                    <label for="area" class="form-label">Área (m²):</label>
+
+                                    <input type="number" class="form-control" id="area" name="area" step="0.01">            </select>
+
+                                </div>
+
+                            </div>        </div>                
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">        
+
+                                    <label for="corretor_id" class="form-label">Corretor Responsável:</label>
+
+                                    <select class="form-control" id="corretor_id" name="corretor_id" required>        <div class="mb-3">        <div class="mb-3">        <div class="mb-3">
+
+                                        <option value="">Selecione um corretor</option>
+
+                                        {% for corretor in corretores %}            <label for="corretor_id" class="form-label">Corretor:</label>
+
+                                        <option value="{{ corretor.id }}">{{ corretor.nome }} - {{ corretor.creci }}</option>
+
+                                        {% endfor %}            <select class="form-control" id="corretor_id" name="corretor_id">            <label for="endereco" class="form-label">Endereço:</label>            <label for="endereco" class="form-label">Endereço:</label>
+
+                                    </select>
+
+                                </div>                <option value="">Selecione um corretor</option>
+
+                            </div>
+
+                        </div>                {% if corretores %}            <input type="text" class="form-control" id="endereco" name="endereco" required>            <input type="text" class="form-control" id="endereco" name="endereco" required>
+
+
+
+                        <div class="row">                    {% for corretor in corretores %}
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">                        <option value="{{ corretor.id }}">{{ corretor.nome }}</option>        </div>        </div>
+
+                                    <label for="status" class="form-label">Status:</label>
+
+                                    <select class="form-control" id="status" name="status" required>                    {% endfor %}
+
+                                        <option value="Disponível">Disponível</option>
+
+                                        <option value="Vendido">Vendido</option>                {% endif %}                
+
+                                        <option value="Alugado">Alugado</option>
+
+                                        <option value="Reservado">Reservado</option>            </select>
+
+                                    </select>
+
+                                </div>        </div>        <div class="mb-3">        <div class="mb-3">
+
+                            </div>
+
+                            <div class="col-md-6">        
+
+                                <div class="mb-3">
+
+                                    <label for="finalidade" class="form-label">Finalidade:</label>        <div class="mb-3">            <label for="valor" class="form-label">Valor (R$):</label>            <label for="valor" class="form-label">Valor (R$):</label>
+
+                                    <select class="form-control" id="finalidade" name="finalidade" required>
+
+                                        <option value="Venda">Venda</option>            <label for="descricao" class="form-label">Descrição:</label>
+
+                                        <option value="Aluguel">Aluguel</option>
+
+                                        <option value="Venda/Aluguel">Venda/Aluguel</option>            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>            <input type="number" class="form-control" id="valor" name="valor" step="0.01" min="0" required>            <input type="number" class="form-control" id="valor" name="valor" step="0.01" min="0" required>
+
+                                    </select>
+
+                                </div>        </div>
+
+                            </div>
+
+                        </div>                </div>        </div>
+
+
+
+                        <div class="mb-3">        <button type="submit" class="btn btn-primary">Cadastrar Imóvel</button>
+
+                            <label for="descricao" class="form-label">Descrição:</label>
+
+                            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-secondary">Cancelar</a>                
+
+                        </div>
+
+    </form>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                            <a href="{{ url_for('imoveis') }}" class="btn btn-secondary me-md-2"></div>        <div class="mb-3">        <div class="mb-3">
+
+                                <i class="fas fa-arrow-left"></i> Cancelar
+
+                            </a>{% endblock %}
+
+                            <button type="submit" class="btn btn-primary">            <label for="status" class="form-label">Status:</label>            <label for="status" class="form-label">Status:</label>
+
+                                <i class="fas fa-save"></i> Cadastrar Imóvel
+
+                            </button>            <select class="form-control" id="status" name="status" required>            <select class="form-control" id="status" name="status" required>
+
+                        </div>
+
+                    </form>                <option value="">Selecione o status</option>                <option value="">Selecione o status</option>
+
+                </div>
+
+            </div>                <option value="Disponível">Disponível</option>                <option value="Disponível">Disponível</option>
+
+        </div>
+
+    </div>                <option value="Vendido">Vendido</option>                <option value="Vendido">Vendido</option>
+
+</div>
+
+{% endblock %}                <option value="Alugado">Alugado</option>                <option value="Alugado">Alugado</option>
+
+                <option value="Em negociação">Em negociação</option>                <option value="Em negociação">Em negociação</option>
+
+            </select>            </select>
+
+        </div>        </div>
+
+                
+
+        <div class="mb-3">        <div class="mb-3">
+
+            <label for="corretor_id" class="form-label">Corretor:</label>            <label for="corretor_id" class="form-label">Corretor:</label>
+
+            <select class="form-control" id="corretor_id" name="corretor_id">            <select class="form-control" id="corretor_id" name="corretor_id">
+
+                <option value="">Selecione um corretor</option>                <option value="">Selecione um corretor</option>
+
+                {% if corretores %}                {% if corretores %}
+
+                    {% for corretor in corretores %}                    {% for corretor in corretores %}
+
+                        <option value="{{ corretor.id }}">{{ corretor.nome }}</option>                        <option value="{{ corretor.id }}">{{ corretor.nome }}</option>
+
+                    {% endfor %}                    {% endfor %}
+
+                {% endif %}                {% endif %}
+
+            </select>            </select>
+
+        </div>        </div>
+
+                
+
+        <div class="mb-3">        <div class="mb-3">
+
+            <label for="descricao" class="form-label">Descrição:</label>            <label for="descricao" class="form-label">Descrição:</label>
+
+            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>
+
+        </div>        </div>
+
+                
+
+        <button type="submit" class="btn btn-primary">Cadastrar Imóvel</button>        <button type="submit" class="btn btn-primary">Cadastrar Imóvel</button>
+
+        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-secondary">Cancelar</a>        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-secondary">Cancelar</a>
+
+    </form>    </form>
+
+</div></div>
+
+{% endblock %}{% endblock %}
+
+        
+
+        <div class="mb-3">        
+
+            <label for="valor" class="form-label">Valor (R$):</label>
+
+            <input type="number" class="form-control" id="valor" name="valor" step="0.01" min="0" required>        <div class="mb-3">        <nav aria-label="breadcrumb">
+
+        </div>
+
+                    <label for="endereco" class="form-label">Endereço:</label>
+
+        <div class="mb-3">
+
+            <label for="status" class="form-label">Status:</label>            <textarea class="form-control" id="endereco" name="endereco" rows="3" required></textarea>    <form method="POST">        <ol class="breadcrumb">
+
+            <select class="form-control" id="status" name="status" required>
+
+                <option value="">Selecione o status</option>        </div>
+
+                <option value="Disponível">Disponível</option>
+
+                <option value="Vendido">Vendido</option>                <div class="mb-3">            <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+
+                <option value="Alugado">Alugado</option>
+
+                <option value="Em negociação">Em negociação</option>        <div class="mb-3">
+
+            </select>
+
+        </div>            <label for="valor" class="form-label">Valor:</label>            <label for="tipo" class="form-label">Tipo:</label>            <li class="breadcrumb-item"><a href="{{ url_for('listar_imoveis') }}">Imóveis</a></li>
+
+        
+
+        <div class="mb-3">            <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
+
+            <label for="corretor_id" class="form-label">Corretor:</label>
+
+            <select class="form-control" id="corretor_id" name="corretor_id">        </div>            <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ex: Casa, Apartamento, Terreno" required>            <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
+
+                <option value="">Selecione um corretor</option>
+
+                {% if corretores %}        
+
+                    {% for corretor in corretores %}
+
+                        <option value="{{ corretor.id }}">{{ corretor.nome }}</option>        <div class="mb-3">        </div>        </ol>
+
+                    {% endfor %}
+
+                {% endif %}            <label for="descricao" class="form-label">Descrição:</label>
+
+            </select>
+
+        </div>            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>            </nav>
+
+        
+
+        <div class="mb-3">        </div>
+
+            <label for="descricao" class="form-label">Descrição:</label>
+
+            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>                <div class="mb-3">
+
+        </div>
+
+                <div class="mb-3">
+
+        <button type="submit" class="btn btn-primary">Cadastrar Imóvel</button>
+
+        <a href="{{ url_for('imoveis') }}" class="btn btn-secondary">Cancelar</a>            <label for="status" class="form-label">Status:</label>            <label for="endereco" class="form-label">Endereço:</label>    <!-- Header da Página -->
+
+    </form>
+
+</div>            <select class="form-control" id="status" name="status">
+
+{% endblock %}
+                <option value="Disponível">Disponível</option>            <textarea class="form-control" id="endereco" name="endereco" rows="3" required></textarea>    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+
+                <option value="Vendido">Vendido</option>
+
+                <option value="Alugado">Alugado</option>        </div>        <h1 class="h2">
+
+                <option value="Reservado">Reservado</option>
+
+            </select>                    <i class="fas fa-building text-primary me-2"></i>
+
+        </div>
+
+                <div class="mb-3">            Cadastrar Novo Imóvel
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+
+        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-secondary">Voltar</a>            <label for="valor" class="form-label">Valor:</label>        </h1>
+
+    </form>
+
+</div>            <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>        <div class="btn-toolbar mb-2 mb-md-0">
+
+{% endblock %}
+        </div>            <div class="btn-group me-2">
+
+                        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-outline-secondary">
+
+        <div class="mb-3">                    <i class="fas fa-arrow-left"></i> Voltar
+
+            <label for="descricao" class="form-label">Descrição:</label>                </a>
+
+            <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>            </div>
+
+        </div>        </div>
+
+            </div>
+
+        <div class="mb-3">
+
+            <label for="status" class="form-label">Status:</label>    <div class="row">
+
+            <select class="form-control" id="status" name="status">        <!-- Formulário Principal -->
+
+                <option value="Disponível">Disponível</option>        <div class="col-lg-8">
+
+                <option value="Vendido">Vendido</option>            <div class="card shadow-sm">
+
+                <option value="Alugado">Alugado</option>                <div class="card-header">
+
+                <option value="Reservado">Reservado</option>                    <h5 class="card-title mb-0">
+
+            </select>                        <i class="fas fa-edit me-2"></i>
+
+        </div>                        Dados do Imóvel
+
+                            </h5>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>                </div>
+
+        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-secondary">Voltar</a>                <div class="card-body">
+
+    </form>                    <form method="POST" action="{{ url_for('adicionar_imovel') }}" class="needs-validation" novalidate>
+
+</div>                        <div class="row">
+
+{% endblock %}                            <!-- Tipo -->
+                            <div class="col-md-6 mb-3">
+                                <label for="tipo" class="form-label">
+                                    <i class="fas fa-building me-1"></i>
+                                    Tipo do Imóvel <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="tipo" name="tipo" required>
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Apartamento">Apartamento</option>
+                                    <option value="Terreno">Terreno</option>
+                                    <option value="Chácara">Chácara</option>
+                                    <option value="Comercial">Comercial</option>
+                                    <option value="Galpão">Galpão</option>
+                                    <option value="Sala Comercial">Sala Comercial</option>
+                                    <option value="Kitnet">Kitnet</option>
+                                    <option value="Studio">Studio</option>
+                                    <option value="Cobertura">Cobertura</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor, selecione o tipo do imóvel.
+                                </div>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="col-md-6 mb-3">
+                                <label for="status" class="form-label">
+                                    <i class="fas fa-chart-line me-1"></i>
+                                    Status <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="status" name="status" required>
+                                    <option value="disponível" selected>✅ Disponível</option>
+                                    <option value="vendido">🏡 Vendido</option>
+                                    <option value="alugado">🔑 Alugado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Endereço -->
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">
+                                <i class="fas fa-map-marker-alt me-1"></i>
+                                Endereço Completo <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="endereco" name="endereco" 
+                                   placeholder="Ex: Rua das Flores, 123, Centro, Palmas-TO"
+                                   required maxlength="200">
+                            <div class="invalid-feedback">
+                                Por favor, informe o endereço completo do imóvel.
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Valor -->
+                            <div class="col-md-6 mb-3">
+                                <label for="valor" class="form-label">
+                                    <i class="fas fa-dollar-sign me-1"></i>
+                                    Valor (R$) <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="valor" name="valor" 
+                                       placeholder="Ex: 250.000,00"
+                                       required>
+                                <div class="form-text">Digite apenas números (ex: 250000.00)</div>
+                                <div class="invalid-feedback">
+                                    Por favor, informe o valor do imóvel.
+                                </div>
+                            </div>
+
+                            <!-- Corretor -->
+                            <div class="col-md-6 mb-3">
+                                <label for="corretor_id" class="form-label">
+                                    <i class="fas fa-user-tie me-1"></i>
+                                    Corretor Responsável
+                                </label>
+                                <select class="form-select" id="corretor_id" name="corretor_id">
+                                    <option value="">Não definido</option>
+                                    {% for corretor in corretores %}
+                                    <option value="{{ corretor.id }}">{{ corretor.nome }} ({{ corretor.creci }})</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Botões de Ação -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('listar_imoveis') }}" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-times"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Salvar Imóvel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards de Ajuda -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h6 class="card-title mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        Dicas para Cadastro
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            <small>Seja específico no endereço</small>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            <small>Valor deve ser realista</small>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            <small>Associe um corretor responsável</small>
+                        </li>
+                        <li>
+                            <i class="fas fa-check text-success me-2"></i>
+                            <small>Mantenha o status atualizado</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h6 class="card-title mb-0">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Informações
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-text small text-muted">
+                        Após cadastrar o imóvel, você poderá editá-lo ou associá-lo aos interesses dos clientes.
+                    </p>
+                    <p class="card-text small text-muted mb-0">
+                        Certifique-se de que todas as informações estão corretas antes de salvar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Validação do formulário
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+
+// Formatação do valor
+document.getElementById('valor').addEventListener('input', function() {
+    let value = this.value.replace(/\D/g, '');
+    if (value.length > 0) {
+        value = (parseInt(value) / 100).toFixed(2);
+        value = value.replace('.', ',');
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        this.value = 'R$ ' + value;
+    }
+});
+
+// Remove formatação antes do envio
+document.querySelector('form').addEventListener('submit', function() {
+    const valorInput = document.getElementById('valor');
+    valorInput.value = valorInput.value.replace(/[^\d,]/g, '').replace(',', '.');
+});
+</script>
+                        <li><strong>Tipo:</strong> Selecione a categoria que melhor descreve o imóvel</li>
+                        <li><strong>Endereço:</strong> Seja específico para facilitar a localização</li>
+                        <li><strong>Valor:</strong> Use o formato númerico (ex: 250000.00)</li>
+                        <li><strong>Corretor:</strong> Opcional, pode ser definido posteriormente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Máscara simples para valor monetário
+document.getElementById('valor').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/[^0-9.]/g, '');
+    e.target.value = value;
+});
+</script>
+{% endblock %}

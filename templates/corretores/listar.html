@@ -1,0 +1,43 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Lista de Corretores - RENT{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Corretores</h2>
+    
+    {% if corretores %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>CRECI</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for corretor in corretores %}
+            <tr>
+                <td>{{ corretor.id }}</td>
+                <td>{{ corretor.nome }}</td>
+                <td>{{ corretor.email }}</td>
+                <td>{{ corretor.telefone }}</td>
+                <td>{{ corretor.creci }}</td>
+                <td>
+                    <a href="/corretor/{{ corretor.id }}" class="btn btn-info btn-sm">Ver</a>
+                    <a href="/corretor/{{ corretor.id }}/editar" class="btn btn-warning btn-sm">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhum corretor cadastrado.</p>
+    {% endif %}
+    
+    <a href="{{ url_for("adicionar_corretor") }}" class="btn btn-primary">Novo Corretor</a>
+</div>
+{% endblock %}

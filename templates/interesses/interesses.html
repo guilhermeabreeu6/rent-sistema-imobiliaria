@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Interesses - Sistema Invistta{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">🔗 Lista de Interesses</h2>
+
+    <a href="{{ url_for('adicionar_interesse') }}" class="btn btn-success mb-3">➕ Novo Interesse</a>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Imóvel</th>
+                <th>Status</th>
+                <th>Data do Interesse</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in interesses %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.cliente }}</td>
+                <td>{{ i.imovel }}</td>
+                <td>{{ i.status_interesse }}</td>
+                <td>{{ i.data_interesse.strftime('%d/%m/%Y') if i.data_interesse else '-' }}</td>
+                <td>
+                    <form method="post" action="{{ url_for('atualizar_interesse', id=i.id) }}" class="d-inline">
+                        <select name="status_interesse" class="form-select form-select-sm d-inline w-auto">
+                            <option>Ativo</option>
+                            <option>Fechado</option>
+                            <option>Cancelado</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm">💾 Atualizar</button>
+                    </form>
+                    <a href="{{ url_for('deletar_interesse', id=i.id) }}" class="btn btn-danger btn-sm">🗑️ Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

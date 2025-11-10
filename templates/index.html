@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Home - RENT Sistema{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Bem-vindo ao RENT - Sistema de Inteligência Imobiliária</h1>
+    <p>Sistema Completo de Gestão Imobiliária</p>
+    
+    <!-- Estatísticas do Sistema -->
+    {% if total_clientes is defined %}
+    <div class="row mt-3 mb-4">
+        <div class="col-md-3">
+            <div class="card text-center bg-primary text-white">
+                <div class="card-body">
+                    <h3>{{ total_clientes or 0 }}</h3>
+                    <p>Clientes</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-success text-white">
+                <div class="card-body">
+                    <h3>{{ total_imoveis or 0 }}</h3>
+                    <p>Imóveis</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-warning text-dark">
+                <div class="card-body">
+                    <h3>{{ total_corretores or 0 }}</h3>
+                    <p>Corretores</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-info text-white">
+                <div class="card-body">
+                    <h3>{{ total_interesses or 0 }}</h3>
+                    <p>Interesses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="row mt-4">
+        <!-- Card de Clientes -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5><i class="fa fa-users"></i> 👥 Clientes</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Gerencie todos os clientes interessados em imóveis</p>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('cadastro') }}" class="btn btn-outline-primary btn-sm">
+                            📝 Cadastrar Cliente
+                        </a>
+                        <a href="{{ url_for('listar_clientes') }}" class="btn btn-primary btn-sm">
+                            👥 Ver Clientes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card de Imóveis -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5><i class="fa fa-home"></i> 🏠 Imóveis</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Cadastre e gerencie todos os imóveis disponíveis</p>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('adicionar_imovel') }}" class="btn btn-outline-success btn-sm">
+                            🏡 Cadastrar Imóvel
+                        </a>
+                        <a href="{{ url_for('listar_imoveis') }}" class="btn btn-success btn-sm">
+                            🏠 Ver Imóveis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card de Corretores -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h5><i class="fa fa-briefcase"></i> 👨‍💼 Corretores</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Gerencie a equipe de corretores da Invistta</p>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('adicionar_corretor') }}" class="btn btn-outline-warning btn-sm">
+                            👔 Cadastrar Corretor
+                        </a>
+                        <a href="{{ url_for('listar_corretores') }}" class="btn btn-warning btn-sm">
+                            👨‍💼 Ver Corretores
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card de Interesses -->
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5><i class="fa fa-heart"></i> ❤️ Interesses de Clientes</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Gerencie os interesses dos clientes por imóveis específicos</p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('adicionar_interesse') }}" class="btn btn-outline-info">
+                            💙 Registrar Interesse
+                        </a>
+                        <a href="{{ url_for('listar_interesses') }}" class="btn btn-info">
+                            ❤️ Ver Interesses
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="features mt-5">
+        <h2>🚀 Sistema Completo</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>✨ Funcionalidades Disponíveis</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">✅ Cadastro Completo de Clientes</li>
+                    <li class="list-group-item">✅ Gestão de Imóveis (Venda/Aluguel)</li>
+                    <li class="list-group-item">✅ Controle de Corretores</li>
+                    <li class="list-group-item">✅ Registro de Interesses</li>
+                    <li class="list-group-item">✅ Interface Web Responsiva</li>
+                    <li class="list-group-item">✅ Validação de Dados</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h4>🔗 Integrações</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">🔗 Relacionamento Cliente-Imóvel</li>
+                    <li class="list-group-item">🔗 Associação Corretor-Imóvel</li>
+                    <li class="list-group-item">📊 Estatísticas em Tempo Real</li>
+                    <li class="list-group-item">🔍 Sistema de Busca</li>
+                    <li class="list-group-item">📱 Responsivo para Mobile</li>
+                    <li class="list-group-item">🛡️ Validações de Segurança</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

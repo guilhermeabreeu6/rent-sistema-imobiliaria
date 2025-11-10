@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Visualizar Cliente - Invistta{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4"><i class="fas fa-user"></i> Detalhes do Cliente</h2>
+
+    {% if cliente %}
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">{{ cliente.nome }}</h5>
+            <div>
+                <a href="{{ url_for('editar_cliente', id=cliente.id) }}" class="btn btn-warning btn-sm">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <a href="{{ url_for('deletar_cliente_web', id=cliente.id) }}" 
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('⚠️ Deseja realmente excluir este cliente?')">
+                   <i class="fas fa-trash-alt"></i> Excluir
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted">E-mail:</label>
+                    <p class="form-control-plaintext border-bottom">{{ cliente.email }}</p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted">Telefone:</label>
+                    <p class="form-control-plaintext border-bottom">{{ cliente.telefone }}</p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted">Endereço:</label>
+                    <p class="form-control-plaintext border-bottom">{{ cliente.endereco or 'Não informado' }}</p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted">Data de Cadastro:</label>
+                    <p class="form-control-plaintext border-bottom">
+                        {{ cliente.data_cadastro.strftime('%d/%m/%Y') if cliente.data_cadastro else 'Não informada' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interesses do Cliente -->
+    <div class="card shadow-sm mt-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fas fa-heart"></i> Interesses</h5>
+            <a href="{{ url_for('adicionar_interesse') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-plus"></i> Novo Interesse
+            </a>
+        </div>
+        <div class="card-body">
+            {% if interesses %}
+            <ul class="list-group">
+                {% for interesse in interesses %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        <strong>Imóvel:</strong> {{ interesse.imovel }}<br>
+                        <strong>Status:</strong> {{ interesse.status_interesse }}
+                    </span>
+                    <form method="post" action="{{ url_for('atualizar_interesse', id=interesse.id) }}">
+                        <select name="status_interesse" class="form-select form-select-sm d-inline w-auto">
+                            <option {% if interesse.status_interesse == 'Ativo' %}selected{% endif %}>Ativo</option>
+                            <option {% if interesse.status_interesse == 'Fechado' %}selected{% endif %}>Fechado</option>
+                            <option {% if interesse.status_interesse == 'Cancelado' %}selected{% endif %}>Cancelado</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm">Atualizar</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-muted">Nenhum interesse cadastrado.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% else %}
+    <p class="text-danger">Cliente não encontrado.</p>
+    {% endif %}
+</div>
+{% endblock %}

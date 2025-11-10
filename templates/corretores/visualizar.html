@@ -1,0 +1,264 @@
+{% extends "base.html" %}{% extends "base_novo.html" %}
+
+
+
+{% block title %}Visualizar Corretor - RENT{% endblock %}{% block title %}{{ corretor.nome }} - Sistema Invistta{% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+<div class="container"><div class="container">
+
+    <h2>Detalhes do Corretor</h2>    <div class="row justify-content-center">
+
+            <div class="col-md-10">
+
+    {% if corretor %}            <!-- Cabeçalho -->
+
+    <div class="card">            <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div class="card-body">                <div>
+
+            <h5 class="card-title">{{ corretor.nome }}</h5>                    <h1 class="h2 text-info">👁️ Perfil do Corretor</h1>
+
+            <p class="card-text">                    <p class="text-muted">Informações completas e imóveis associados</p>
+
+                <strong>ID:</strong> {{ corretor.id }}<br>                </div>
+
+                <strong>Email:</strong> {{ corretor.email }}<br>                <div class="btn-group">
+
+                <strong>Telefone:</strong> {{ corretor.telefone }}<br>                    <a href="{{ url_for('editar_corretor', id=corretor.id) }}" class="btn btn-warning">
+
+                <strong>CRECI:</strong> {{ corretor.creci }}<br>                        ✏️ Editar
+
+                <strong>Endereço:</strong> {{ corretor.endereco if corretor.endereco else 'Não informado' }}                    </a>
+
+            </p>                    {% if corretor.total_imoveis == 0 %}
+
+        </div>                    <a href="{{ url_for('excluir_corretor', id=corretor.id) }}" 
+
+    </div>                       class="btn btn-danger"
+
+                           onclick="return confirm('⚠️ Tem certeza que deseja excluir o corretor {{ corretor.nome }}?')">
+
+    <div class="mt-3">                       🗑️ Excluir
+
+        <a href="{{ url_for('listar_corretores') }}" class="btn btn-secondary">Voltar à Lista</a>                    </a>
+
+        <a href="/corretor/{{ corretor.id }}/editar" class="btn btn-warning">Editar</a>                    {% endif %}
+
+    </div>                    <a href="{{ url_for('listar_corretores') }}" class="btn btn-secondary">
+
+    {% else %}                        ⬅️ Voltar
+
+    <p>Corretor não encontrado.</p>                    </a>
+
+    <a href="{{ url_for('listar_corretores') }}" class="btn btn-secondary">Voltar à Lista</a>                </div>
+
+    {% endif %}            </div>
+
+</div>
+
+{% endblock %}            <!-- Card Principal -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">👨‍💼 {{ corretor.nome }}</h5>
+                        {% if corretor.total_imoveis > 0 %}
+                            <span class="badge bg-success fs-6">✅ Ativo</span>
+                        {% else %}
+                            <span class="badge bg-warning fs-6">💤 Inativo</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Coluna 1: Informações Pessoais -->
+                        <div class="col-md-6">
+                            <h6 class="text-primary">👤 Informações Pessoais</h6>
+                            
+                            <div class="mb-3">
+                                <strong>🆔 ID:</strong>
+                                <span class="text-muted">#{{ corretor.id }}</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>👤 Nome Completo:</strong>
+                                <br><span class="fs-5">{{ corretor.nome }}</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>📧 Email:</strong>
+                                <br><a href="mailto:{{ corretor.email }}" class="text-decoration-none">{{ corretor.email }}</a>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>📱 Telefone:</strong>
+                                {% if corretor.telefone %}
+                                    <br><a href="tel:{{ corretor.telefone }}" class="text-decoration-none">{{ corretor.telefone }}</a>
+                                {% else %}
+                                    <br><span class="text-muted">Não informado</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>🏷️ CRECI:</strong>
+                                {% if corretor.creci %}
+                                    <br><span class="badge bg-info fs-6">{{ corretor.creci }}</span>
+                                {% else %}
+                                    <br><span class="text-muted">Não informado</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>📅 Cadastrado em:</strong>
+                                <br><span class="text-muted">
+                                    {{ corretor.data_cadastro.strftime('%d/%m/%Y às %H:%M') if corretor.data_cadastro else 'N/A' }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 2: Estatísticas de Imóveis -->
+                        <div class="col-md-6">
+                            <h6 class="text-primary">📊 Estatísticas de Imóveis</h6>
+                            
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-6">
+                                            <h4 class="text-primary">{{ corretor.total_imoveis }}</h4>
+                                            <small>Total de Imóveis</small>
+                                        </div>
+                                        <div class="col-6">
+                                            {% if corretor.total_imoveis > 0 %}
+                                                <h4 class="text-success">Ativo</h4>
+                                                <small>Status do Corretor</small>
+                                            {% else %}
+                                                <h4 class="text-warning">Inativo</h4>
+                                                <small>Sem imóveis</small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    {% if corretor.total_imoveis > 0 %}
+                                    <hr>
+                                    <div class="row text-center">
+                                        <div class="col-4">
+                                            <div class="text-success">
+                                                <strong>{{ corretor.imoveis_disponiveis }}</strong>
+                                                <br><small>Disponíveis</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="text-danger">
+                                                <strong>{{ corretor.imoveis_vendidos }}</strong>
+                                                <br><small>Vendidos</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="text-warning">
+                                                <strong>{{ corretor.imoveis_alugados }}</strong>
+                                                <br><small>Alugados</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imóveis Associados -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h6 class="mb-0">🏠 Imóveis Associados ({{ imoveis|length }})</h6>
+                </div>
+                <div class="card-body">
+                    {% if imoveis %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tipo</th>
+                                        <th>Endereço</th>
+                                        <th>Valor</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for imovel in imoveis %}
+                                    <tr>
+                                        <td>#{{ imovel.id }}</td>
+                                        <td>{{ imovel.tipo }}</td>
+                                        <td>{{ imovel.endereco[:50] }}{{ '...' if imovel.endereco|length > 50 }}</td>
+                                        <td>R$ {{ "%.2f"|format(imovel.valor) }}</td>
+                                        <td>
+                                            {% if imovel.status == 'disponível' %}
+                                                <span class="badge bg-success">✅ {{ imovel.status }}</span>
+                                            {% elif imovel.status == 'vendido' %}
+                                                <span class="badge bg-danger">🏡 {{ imovel.status }}</span>
+                                            {% elif imovel.status == 'alugado' %}
+                                                <span class="badge bg-warning">🔑 {{ imovel.status }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('visualizar_imovel', id=imovel.id) }}" 
+                                               class="btn btn-info btn-xs">Ver</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center text-muted">
+                            <h5>📭 Nenhum imóvel associado</h5>
+                            <p>Este corretor ainda não possui imóveis cadastrados.</p>
+                            <a href="{{ url_for('adicionar_imovel') }}" class="btn btn-primary btn-sm">
+                                ➕ Adicionar Imóvel
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Ações Rápidas -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h6 class="mb-0">🛠️ Ações Rápidas</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-2">
+                            <a href="{{ url_for('editar_corretor', id=corretor.id) }}" 
+                               class="btn btn-warning w-100">
+                                ✏️ Editar Informações
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <a href="{{ url_for('adicionar_imovel') }}" class="btn btn-primary w-100">
+                                🏠 Cadastrar Imóvel
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <a href="mailto:{{ corretor.email }}" class="btn btn-info w-100">
+                                📧 Enviar Email
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <a href="{{ url_for('listar_corretores') }}" class="btn btn-secondary w-100">
+                                📋 Ver Todos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

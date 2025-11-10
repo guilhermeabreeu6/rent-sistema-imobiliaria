@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Novo Interesse{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>➕ Adicionar Novo Interesse</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="cliente" class="form-label">Cliente</label>
+            <select class="form-select" name="cliente_id" required>
+                {% for c in clientes %}
+                    <option value="{{ c.id }}">{{ c.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="imovel" class="form-label">Imóvel</label>
+            <select class="form-select" name="imovel_id" required>
+                {% for i in imoveis %}
+                    <option value="{{ i.id }}">{{ i.endereco }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 Salvar Interesse</button>
+        <a href="{{ url_for('listar_interesses') }}" class="btn btn-secondary">⬅️ Voltar</a>
+    </form>
+</div>
+{% endblock %}

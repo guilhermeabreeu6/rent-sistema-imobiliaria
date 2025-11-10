@@ -1,0 +1,331 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #1a1a2e; /* Azul escuro para texto */
+    background-color: #f8f9fa;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%); /* Azul escuro gradiente */
+    color: #ffd700; /* Amarelo para texto */
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border-bottom: 3px solid #ffd700; /* Borda amarela */
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ffd700, #ffed4e); /* Gradiente amarelo */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #ffd700; /* Amarelo */
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+}
+
+nav ul li a:hover {
+    background-color: #ffd700; /* Fundo amarelo no hover */
+    color: #1a1a2e; /* Texto azul escuro no hover */
+    border: 1px solid #ffd700;
+    transform: translateY(-2px);
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    min-height: calc(100vh - 200px);
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(26, 26, 46, 0.1);
+    border-top: 4px solid #ffd700; /* Borda amarela no topo */
+}
+
+/* Títulos */
+h1 {
+    color: #1a1a2e; /* Azul escuro */
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(255, 215, 0, 0.3); /* Sombra amarela sutil */
+}
+
+h2 {
+    color: #1a1a2e; /* Azul escuro */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #ffd700; /* Linha amarela sob o título */
+    margin: 10px auto;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); /* Gradiente amarelo */
+    color: #1a1a2e; /* Texto azul escuro */
+    border: 2px solid #ffd700;
+    font-weight: bold;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); /* Gradiente azul escuro */
+    color: #ffd700; /* Texto amarelo */
+    border: 2px solid #1a1a2e;
+}
+
+.btn-secondary {
+    background: #000000; /* Preto */
+    color: #ffd700; /* Texto amarelo */
+    border: 2px solid #000000;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); /* Sombra amarela no hover */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+    box-shadow: 0 5px 15px rgba(26, 26, 46, 0.4);
+}
+
+.btn-secondary:hover {
+    background: #333333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Actions */
+.actions {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Features */
+.features {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #fffef7 100%); /* Fundo sutil */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ffd700; /* Borda amarela lateral */
+}
+
+.features ul {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.features li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #1a1a2e; /* Azul escuro */
+}
+
+.features li::before {
+    content: '⭐';
+    color: #ffd700; /* Estrela amarela */
+    margin-right: 8px;
+}
+
+/* Formulários */
+.form-cadastro {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #1a1a2e; /* Azul escuro */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ffd700; /* Borda amarela no foco */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Sombra amarela */
+    background-color: #fffef7; /* Fundo levemente amarelado */
+}
+
+/* Novos estilos para validação */
+.form-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.text-danger {
+    color: #dc3545;
+}
+
+input:invalid {
+    border-color: #dc3545;
+}
+
+input:valid {
+    border-color: #28a745;
+}
+
+/* Melhorar alertas informativos */
+.alert-info {
+    background: linear-gradient(135deg, #e7f3ff 0%, #f0f8ff 100%);
+    border: 1px solid #1a1a2e;
+    border-left: 4px solid #ffd700;
+    color: #1a1a2e;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%); /* Preto para azul escuro */
+    color: #ffd700; /* Texto amarelo */
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-top: 3px solid #ffd700; /* Borda amarela no topo */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Efeitos especiais Invistta */
+.invistta-accent {
+    background: linear-gradient(45deg, #ffd700, #1a1a2e);
+    height: 3px;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+/* Estilos personalizados para mensagens flash */
+.alert {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: slideInDown 0.5s ease-out;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border-left: 5px solid #155724;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #dc3545, #e74c3c);
+    color: white;
+    border-left: 5px solid #721c24;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #17a2b8, #6f42c1);
+    color: white;
+    border-left: 5px solid #0c5460;
+}
+
+/* Animação para as mensagens */
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animação sutil para elementos interativos */
+@keyframes invistta-glow {
+    0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+}
+
+.btn-primary:hover {
+    animation: invistta-glow 2s infinite;
+}
