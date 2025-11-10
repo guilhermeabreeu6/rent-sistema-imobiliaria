@@ -45,19 +45,17 @@ O **RENT - Sistema de Inteligência Imobiliária** é uma aplicação web comple
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Backend:** Python 3.11+ com Flask
+- **Backend:** Python 3.11 com um microframework compatível com Flask incluso no repositório
 - **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5.3
-- **Banco de Dados:** MySQL 8.0+
+- **Armazenamento:** Repositório em memória, dispensando qualquer dependência externa
 - **Bibliotecas Python:**
-  - Flask (Framework web)
-  - mysql-connector-python (Conector MySQL)
-  - datetime (Manipulação de datas)
+  - `datetime` para manipulação de datas
+  - Nenhuma dependência externa é necessária
 
 ## 📋 Pré-requisitos
 
 - Python 3.11 ou superior
-- MySQL 8.0 ou superior
-- pip (gerenciador de pacotes Python)
+- Nenhuma dependência extra é necessária: todo o código roda com a biblioteca padrão
 
 ## 🚀 Instalação
 
@@ -81,41 +79,28 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-4. **Instale as dependências:**
+4. **Execute a aplicação:**
 ```bash
-pip install -r requerimentts.txt
+python rent_app.py
 ```
 
-5. **Configure o banco de dados:**
-```bash
-python configurar_banco.py
-```
-
-6. **Execute a aplicação:**
-```bash
-python app.py
-```
-
-7. **Acesse no navegador:**
+5. **Acesse no navegador:**
 ```
 http://localhost:5000
 ```
 
-## ⚙️ Configuração do Banco de Dados
+## ⚙️ Armazenamento de Dados
 
-O sistema utiliza MySQL como banco de dados. Execute o arquivo `configurar_banco.py` para criar automaticamente:
-
-- Database `sistema_imobiliario`
-- Tabelas: `clientes`, `corretores`, `imoveis`, `interesses`
-- Estrutura completa com relacionamentos
+Todos os dados são mantidos em memória por meio de um repositório thread-safe implementado em `db/storage.py`. Nenhuma configuração adicional é necessária. Os testes automatizados inicializam a aplicação com dados de demonstração que podem ser manipulados livremente durante os cenários de teste.
 
 ## 📂 Estrutura do Projeto
 
 ```
 rent-sistema-imobiliario/
-├── app.py                 # Arquivo principal da aplicação
-├── configurar_banco.py    # Script de configuração do banco
-├── requerimentts.txt      # Dependências do projeto
+├── app.py                 # Ponte que reexporta a aplicação para os testes
+├── rent_app.py            # Lógica completa da aplicação (rotas e serviços)
+├── configurar_banco.py    # Script legado de configuração do banco (não é mais necessário)
+├── requerimentts.txt      # Dependências do projeto (não é utilizado nesta versão)
 ├── db/
 │   └── conexao.py         # Configurações de conexão com banco
 ├── models/

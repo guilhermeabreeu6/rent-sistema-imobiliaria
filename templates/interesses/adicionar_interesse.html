@@ -1,31 +1,48 @@
 {% extends "base.html" %}
-{% block title %}Novo Interesse{% endblock %}
+{% block title %}Registrar Interesse - Sistema RENT{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2>➕ Adicionar Novo Interesse</h2>
+    <h2 class="mb-4">Registrar Interesse</h2>
 
-    <form method="POST">
+    <form method="POST" action="{{ url_for('adicionar_interesse') }}" class="shadow-sm p-4 bg-light rounded">
         <div class="mb-3">
-            <label for="cliente" class="form-label">Cliente</label>
-            <select class="form-select" name="cliente_id" required>
-                {% for c in clientes %}
-                    <option value="{{ c.id }}">{{ c.nome }}</option>
+            <label for="cliente_id" class="form-label">Cliente</label>
+            <select class="form-select" id="cliente_id" name="cliente_id" required>
+                <option value="">-- Selecionar --</option>
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
                 {% endfor %}
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="imovel" class="form-label">Imóvel</label>
-            <select class="form-select" name="imovel_id" required>
-                {% for i in imoveis %}
-                    <option value="{{ i.id }}">{{ i.endereco }}</option>
+            <label for="imovel_id" class="form-label">Imóvel</label>
+            <select class="form-select" id="imovel_id" name="imovel_id" required>
+                <option value="">-- Selecionar --</option>
+                {% for imovel in imoveis %}
+                <option value="{{ imovel.id }}">{{ imovel.tipo }} - {{ imovel.endereco }}</option>
                 {% endfor %}
             </select>
         </div>
 
-        <button type="submit" class="btn btn-success">💾 Salvar Interesse</button>
-        <a href="{{ url_for('listar_interesses') }}" class="btn btn-secondary">⬅️ Voltar</a>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status">
+                <option value="Ativo">Ativo</option>
+                <option value="Pendente">Pendente</option>
+                <option value="Finalizado">Finalizado</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="observacoes" class="form-label">Observações</label>
+            <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('listar_interesses') }}" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
 {% endblock %}

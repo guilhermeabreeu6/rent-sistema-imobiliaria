@@ -6,8 +6,13 @@
 📊 Testa todas as funcionalidades de corretores
 """
 
-from app import app
 import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app import app
 
 def testar_crud_corretores():
     print("👨‍💼 TESTE COMPLETO DO CRUD DE CORRETORES")

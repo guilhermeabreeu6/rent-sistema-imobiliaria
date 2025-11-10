@@ -1,45 +1,44 @@
 {% extends "base.html" %}
-{% block title %}Interesses - Sistema Invistta{% endblock %}
+{% block title %}Interesses - Sistema RENT{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">🔗 Lista de Interesses</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>❤️ Interesses de Clientes</h2>
+        <a href="{{ url_for('adicionar_interesse') }}" class="btn btn-success">Registrar Interesse</a>
+    </div>
 
-    <a href="{{ url_for('adicionar_interesse') }}" class="btn btn-success mb-3">➕ Novo Interesse</a>
-
-    <table class="table table-striped table-bordered">
+    {% if interesses %}
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Cliente</th>
                 <th>Imóvel</th>
                 <th>Status</th>
-                <th>Data do Interesse</th>
-                <th>Ações</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
-            {% for i in interesses %}
+            {% for interesse in interesses %}
             <tr>
-                <td>{{ i.id }}</td>
-                <td>{{ i.cliente }}</td>
-                <td>{{ i.imovel }}</td>
-                <td>{{ i.status_interesse }}</td>
-                <td>{{ i.data_interesse.strftime('%d/%m/%Y') if i.data_interesse else '-' }}</td>
+                <td>{{ interesse.id }}</td>
+                <td>{{ interesse.cliente_nome }}</td>
+                <td>{{ interesse.imovel_tipo }} - {{ interesse.imovel_endereco }}</td>
+                <td>{{ interesse.status }}</td>
                 <td>
-                    <form method="post" action="{{ url_for('atualizar_interesse', id=i.id) }}" class="d-inline">
-                        <select name="status_interesse" class="form-select form-select-sm d-inline w-auto">
-                            <option>Ativo</option>
-                            <option>Fechado</option>
-                            <option>Cancelado</option>
-                        </select>
-                        <button class="btn btn-primary btn-sm">💾 Atualizar</button>
-                    </form>
-                    <a href="{{ url_for('deletar_interesse', id=i.id) }}" class="btn btn-danger btn-sm">🗑️ Excluir</a>
+                    {% if interesse.data_interesse %}
+                        {{ interesse.data_interesse.strftime('%d/%m/%Y %H:%M') }}
+                    {% else %}
+                        —
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <div class="alert alert-warning text-center">Nenhum interesse cadastrado.</div>
+    {% endif %}
 </div>
 {% endblock %}

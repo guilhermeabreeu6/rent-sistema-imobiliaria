@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Editar Cliente - Sistema RENT{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Editar Cliente</h2>
+
+    <form method="POST" action="{{ url_for('editar_cliente', cliente_id=cliente.id) }}" class="shadow-sm p-4 bg-light rounded">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ cliente.nome }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ cliente.email }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone" value="{{ cliente.telefone }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="endereco" name="endereco" value="{{ cliente.endereco }}">
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar alterações</button>
+        <a href="{{ url_for('visualizar_cliente', cliente_id=cliente.id) }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

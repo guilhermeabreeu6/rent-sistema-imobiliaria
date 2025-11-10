@@ -1,132 +1,52 @@
-from db.conexao import obter_conexao
-import mysql.connector
+"""Modelo de clientes utilizando o repositório em memória."""
 
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import List, Optional
+
+from db.storage import Record, repo
+
+
+@dataclass
 class Cliente:
-    def __init__(self, nome, email, telefone):
-        self.nome = nome
-        self.email = email
-        self.telefone = telefone
+    nome: str
+    email: str
+    telefone: str
+    endereco: Optional[str] = None
+
+    def salvar(self) -> bool:
+        repo.criar_cliente(self.nome, self.email, self.telefone, self.endereco)
+        return True
+
+    def atualizar(self, cliente_id: int) -> bool:
+        repo.atualizar_cliente(cliente_id, self.nome, self.email, self.telefone, self.endereco)
+        return True
 
     @staticmethod
-    def email_existe(email):
-        """Verifica se o email já está cadastrado"""
-        conexao = obter_conexao()
-        if conexao:
-            cursor = conexao.cursor()
-            cursor.execute("SELECT id FROM clientes WHERE email = %s", (email,))
-            resultado = cursor.fetchone()
-            cursor.close()
-            conexao.close()
-            return resultado is not None
-        return False
-    
+    def listar_todos() -> List[Record]:
+        return repo.listar_clientes()
+
     @staticmethod
-    def telefone_existe(telefone):
-        """Verifica se o telefone já está cadastrado"""
-        if not telefone:  # Se telefone estiver vazio, não verifica
+    def buscar_por_id(cliente_id: int) -> Optional[Record]:
+        return repo.obter_cliente(cliente_id)
+
+    @staticmethod
+    def excluir(cliente_id: int) -> bool:
+        return repo.remover_cliente(cliente_id)
+
+    @staticmethod
+    def email_existe(email: str) -> bool:
+        return repo.email_cliente_existe(email)
+
+    @staticmethod
+    def telefone_existe(telefone: str) -> bool:
+        if not telefone:
             return False
-        conexao = obter_conexao()
-        if conexao:
-            cursor = conexao.cursor()
-            cursor.execute("SELECT id FROM clientes WHERE telefone = %s", (telefone,))
-            resultado = cursor.fetchone()
-            cursor.close()
-            conexao.close()
-            return resultado is not None
-        return False
-
-    def salvar(self):
-        conexao = obter_conexao()
-        if conexao:
-            try:
-                cursor = conexao.cursor()
-                comando = "INSERT INTO clientes (nome, email, telefone) VALUES (%s, %s, %s)"
-                valores = (self.nome, self.email, self.telefone)
-                cursor.execute(comando, valores)
-                conexao.commit()
-                cursor.close()
-                conexao.close()
-                return True
-            except mysql.connector.IntegrityError as e:
-                conexao.close()
-                if "uk_cliente_email" in str(e):
-                    raise ValueError("Email já cadastrado")
-                elif "uk_cliente_telefone" in str(e):
-                    raise ValueError("Telefone já cadastrado")
-                else:
-                    raise ValueError(f"Erro de integridade: {e}")
-            except Exception as e:
-                conexao.close()
-                raise e
-        return False
+        return repo.telefone_cliente_existe(telefone)
 
     @staticmethod
-    def buscar_por_id(id):
-        """Busca um cliente por ID"""
-        conexao = obter_conexao()
-        if conexao:
-            cursor = conexao.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM clientes WHERE id = %s", (id,))
-            cliente = cursor.fetchone()
-            cursor.close()
-            conexao.close()
-            return cliente
-        return None
+    def listar_interesses(cliente_id: int):
+        from models.interesse_model import Interesse  # Import tardio para evitar ciclos
 
-    @staticmethod
-    def listar_todos():
-        """Lista todos os clientes"""
-        conexao = obter_conexao()
-        if conexao:
-            cursor = conexao.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM clientes ORDER BY id ASC")
-            clientes = cursor.fetchall()
-            cursor.close()
-            conexao.close()
-            return clientes
-        return []
-
-    @staticmethod
-    def excluir(id):
-        """Exclui um cliente por ID"""
-        conexao = obter_conexao()
-        if conexao:
-            cursor = conexao.cursor()
-            cursor.execute("DELETE FROM clientes WHERE id = %s", (id,))
-            linhas_afetadas = cursor.rowcount
-            conexao.commit()
-            cursor.close()
-            conexao.close()
-            return linhas_afetadas > 0
-        return False
-
-    def atualizar(self, id):
-        """Atualiza os dados de um cliente"""
-        conexao = obter_conexao()
-        if conexao:
-            try:
-                cursor = conexao.cursor()
-                comando = """
-                    UPDATE clientes 
-                    SET nome = %s, email = %s, telefone = %s 
-                    WHERE id = %s
-                """
-                valores = (self.nome, self.email, self.telefone, id)
-                cursor.execute(comando, valores)
-                linhas_afetadas = cursor.rowcount
-                conexao.commit()
-                cursor.close()
-                conexao.close()
-                return linhas_afetadas > 0
-            except mysql.connector.IntegrityError as e:
-                conexao.close()
-                if "uk_cliente_email" in str(e):
-                    raise ValueError("Email já cadastrado para outro cliente")
-                elif "uk_cliente_telefone" in str(e):
-                    raise ValueError("Telefone já cadastrado para outro cliente")
-                else:
-                    raise ValueError(f"Erro de integridade: {e}")
-            except Exception as e:
-                conexao.close()
-                raise e
-        return False
+        return Interesse.listar_por_cliente(cliente_id)

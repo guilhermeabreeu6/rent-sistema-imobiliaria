@@ -6,10 +6,16 @@
 🔗 Testa integração entre Clientes, Imóveis e Corretores
 """
 
-from app import app
 import json
 import random
 from datetime import datetime
+
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app import app
 
 def teste_sistema_completo():
     print("🎯 TESTE SISTEMA COMPLETO - INVISTTA")
