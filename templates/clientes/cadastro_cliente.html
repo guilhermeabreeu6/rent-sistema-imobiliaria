@@ -1,37 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Cadastrar Cliente - RENT Sistema{% endblock %}
+{% block title %}Cadastrar Cliente - Sistema RENT{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4"><i class="fas fa-user-plus"></i> Cadastrar Novo Cliente</h2>
+    <h2 class="mb-4">Cadastrar Novo Cliente</h2>
 
-    <form method="POST" action="{{ url_for('cadastrar_cliente') }}" class="shadow-sm p-4 bg-light rounded">
+    <form method="POST" action="{{ url_for('criar_cliente') }}" class="shadow-sm p-4 bg-light rounded">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: João da Silva" required>
+            <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Ex: joao@email.com" required>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
 
         <div class="mb-3">
             <label for="telefone" class="form-label">Telefone</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Ex: (63) 9 9999-9999" required>
+            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(63) 9 9999-9999">
         </div>
 
         <div class="mb-3">
             <label for="endereco" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Ex: Rua JK, Qd. 103, Lt. 12, Palmas-TO">
+            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, número, bairro">
         </div>
 
-        <button type="submit" class="btn btn-success">
-            <i class="fas fa-save"></i> Salvar Cliente
-        </button>
-        <a href="{{ url_for('listar_clientes') }}" class="btn btn-secondary ms-2">
-            <i class="fas fa-arrow-left"></i> Voltar
-        </a>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('listar_clientes') }}" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
 {% endblock %}

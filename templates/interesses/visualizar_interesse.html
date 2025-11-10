@@ -1,31 +1,22 @@
 {% extends "base.html" %}
-
-{% block title %}Visualizar Interesse - RENT{% endblock %}
+{% block title %}Detalhes do Interesse - Sistema RENT{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>Detalhes do Interesse</h2>
-    
+<div class="container mt-4">
     {% if interesse %}
     <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Interesse #{{ interesse.id }}</h5>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">Interesse #{{ interesse.id }}</h5>
-            <p class="card-text">
-                <strong>Cliente:</strong> {{ interesse.cliente_nome if interesse.cliente_nome else 'N/A' }}<br>
-                <strong>Imóvel:</strong> {{ interesse.imovel_tipo if interesse.imovel_tipo else 'N/A' }} - {{ interesse.imovel_endereco if interesse.imovel_endereco else 'N/A' }}<br>
-                <strong>Data do Interesse:</strong> {{ interesse.data_interesse.strftime('%d/%m/%Y') if interesse.data_interesse else 'N/A' }}<br>
-                <strong>Observações:</strong> {{ interesse.observacoes if interesse.observacoes else 'Nenhuma observação' }}
-            </p>
+            <p><strong>Cliente:</strong> {{ interesse.cliente_nome }}</p>
+            <p><strong>Imóvel:</strong> {{ interesse.imovel_tipo }} - {{ interesse.imovel_endereco }}</p>
+            <p><strong>Status:</strong> {{ interesse.status }}</p>
+            <p><strong>Observações:</strong> {{ interesse.observacoes or '—' }}</p>
         </div>
     </div>
-    
-    <div class="mt-3">
-        <a href="{{ url_for('listar_interesses') }}" class="btn btn-secondary">Voltar à Lista</a>
-        <a href="/interesse/{{ interesse.id }}/editar" class="btn btn-warning">Editar</a>
-    </div>
     {% else %}
-    <p>Interesse não encontrado.</p>
-    <a href="{{ url_for('listar_interesses') }}" class="btn btn-secondary">Voltar à Lista</a>
+    <div class="alert alert-danger">Interesse não encontrado.</div>
     {% endif %}
 </div>
 {% endblock %}

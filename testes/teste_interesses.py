@@ -6,8 +6,8 @@ Teste básico do sistema de interesses
 import sys
 import os
 
-# Adicionar o diretório do projeto ao path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Adicionar o diretório raiz do projeto ao path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from models.interesse_model import Interesse
 from models.cliente_model import Cliente

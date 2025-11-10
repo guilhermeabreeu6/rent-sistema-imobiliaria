@@ -3,8 +3,13 @@
 
 """Teste específico para templates de cliente"""
 
-from app import app
 import random
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app import app
 
 def testar_templates_cliente():
     email_unico = f'test.template.{random.randint(1000,9999)}@test.com'
